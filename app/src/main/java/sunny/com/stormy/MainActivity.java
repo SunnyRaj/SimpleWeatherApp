@@ -6,9 +6,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
+import com.squareup.okhttp.*;
+
+import java.io.IOException;
+
+
 public class MainActivity extends AppCompatActivity {
+
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,23 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        String apiKey = "e7220de7fb16ee318ac979fd820daf74";
+        double latitude = 32.8267;
+        double longitude = -122.423;
+        String forecastUrl = "https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude;
 
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(forecastUrl).build();
+
+        Call call = client.newCall(request);
+
+        try {
+            Response response = call.execute();
+            if (response.isSuccessful()){
+                Log.v(TAG, response.body().string());
+            }
+        } catch (IOException e) {
+            Log.e(TAG, "Exception caught: ", e);
+        }
     }
 }
