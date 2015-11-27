@@ -42,14 +42,23 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder().url(forecastUrl).build();
 
         Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
 
-        try {
-            Response response = call.execute();
-            if (response.isSuccessful()){
-                Log.v(TAG, response.body().string());
             }
-        } catch (IOException e) {
-            Log.e(TAG, "Exception caught: ", e);
-        }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                try {
+                    if (response.isSuccessful()){
+                        Log.v(TAG, response.body().string());
+                    }
+                } catch (IOException e) {
+                    Log.e(TAG, "Exception caught: ", e);
+                }
+            }
+        });
+        Log.d(TAG, "Main UI code is running");
     }
 }
