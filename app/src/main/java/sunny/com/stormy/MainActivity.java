@@ -68,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(this, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+            alertUserAboutNoNetworkError();
+            // Toast.makeText(this, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
         Log.d(TAG, "Main UI code is running");
     }
@@ -85,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void alertUserAboutError() {
         AlertDialogFragment dialog = new AlertDialogFragment();
+        dialog.show(getFragmentManager(), "error_dialog");
+    }
+
+    private void alertUserAboutNoNetworkError() {
+        NoNetworkAlertDialogFragment dialog = new NoNetworkAlertDialogFragment();
         dialog.show(getFragmentManager(), "error_dialog");
     }
 }
