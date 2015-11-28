@@ -10,7 +10,7 @@ public class Hour {
     private String mIcon;
     private String mTimezone;
 
-    public long getTime() {
+    public long getTime(String time) {
         return mTime;
     }
 
