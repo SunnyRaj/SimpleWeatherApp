@@ -67,7 +67,13 @@ public class MainActivity extends AppCompatActivity {
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
                             mCurrentWeather = getCurrentDetails(jsonData);
-
+                            // It is mandatory to run this on the UI thread
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateDisplay();
+                                }
+                            });
                         } else {
                             alertUserAboutError();
                         }
@@ -83,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
             // Toast.makeText(this, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
         Log.d(TAG, "Main UI code is running");
+    }
+
+    private void updateDisplay() {
+        mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException {
