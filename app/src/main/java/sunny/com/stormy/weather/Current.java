@@ -1,13 +1,15 @@
-package sunny.com.stormy;
+package sunny.com.stormy.weather;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import sunny.com.stormy.R;
+
 /**
  * Created by sunny on 11/27/15.
  */
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private long mTime;
     private double mTemperature;
