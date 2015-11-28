@@ -6,7 +6,7 @@ package sunny.com.stormy.weather;
 public class Hour {
     private long mTime;
     private String mSummary;
-    private double mTemperatureMax;
+    private double mTemperature;
     private String mIcon;
     private String mTimezone;
 
@@ -26,12 +26,12 @@ public class Hour {
         mSummary = summary;
     }
 
-    public double getTemperatureMax() {
-        return mTemperatureMax;
+    public double getTemperature() {
+        return mTemperature;
     }
 
-    public void setTemperatureMax(double temperatureMax) {
-        mTemperatureMax = temperatureMax;
+    public void setTemperature(double temperature) {
+        mTemperature = temperature;
     }
 
     public String getIcon() {

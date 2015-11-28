@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jsonHour = data.getJSONObject(i);
             Hour hour = new Hour();
             hour.setSummary(jsonHour.getString("summary"));
-            hour.setTemperatureMax(jsonHour.getDouble("temperatureMax"));
+            hour.setTemperature(jsonHour.getDouble("temperature"));
             hour.setIcon(jsonHour.getString("icon"));
             hour.setTime(jsonHour.getLong("time"));
             hour.setTimezone(timezone);
