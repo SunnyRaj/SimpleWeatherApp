@@ -17,7 +17,6 @@ public class Day implements Parcelable{
     private String mIcon;
     private String mTimezone;
 
-
     public long getTime() {
         return mTime;
     }
@@ -91,7 +90,9 @@ public class Day implements Parcelable{
         mTimezone = in.readString();
     }
 
-    public static final Creator<Day> CREATER = new Creator<Day>() {
+    public Day() { }
+
+    public static final Creator<Day> CREATOR = new Creator<Day>() {
         @Override
         public Day createFromParcel(Parcel source) {
             return new Day(source);
