@@ -1,6 +1,7 @@
 package sunny.com.stormy.ui;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,8 @@ public class DailyForecastActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_forecast);
 
+        Intent intent = getIntent();
+        mDays = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);
         DayAdapter adapter = new DayAdapter(this, mDays);
 
     }
