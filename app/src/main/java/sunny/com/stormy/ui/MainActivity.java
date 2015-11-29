@@ -167,14 +167,14 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i < nItems; i++) {
             JSONObject jsonDay = data.getJSONObject(i);
-            Day hour = new Day();
-            hour.setSummary(jsonDay.getString("summary"));
-            hour.setTemperatureMax(jsonDay.getDouble("temperatureMax"));
-            hour.setIcon(jsonDay.getString("icon"));
-            hour.setTime(jsonDay.getLong("time"));
-            hour.setTimezone(timezone);
+            Day day = new Day();
+            day.setSummary(jsonDay.getString("summary"));
+            day.setTemperatureMax(jsonDay.getDouble("temperatureMax"));
+            day.setIcon(jsonDay.getString("icon"));
+            day.setTime(jsonDay.getLong("time"));
+            day.setTimezone(timezone);
 
-            days[i] = hour;
+            days[i] = day;
         }
         return days;
 
